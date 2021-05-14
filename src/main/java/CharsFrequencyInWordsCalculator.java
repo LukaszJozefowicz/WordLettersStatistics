@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.regex.Pattern;
 
 public class CharsFrequencyInWordsCalculator {
 
@@ -19,17 +20,31 @@ public class CharsFrequencyInWordsCalculator {
     }
 
     private void removeSpecialChars(){
+        input = input.trim();
         for(String specialChar : SPECIAL_CHARS){
             if(input.contains(specialChar)){
+                specialChar = Pattern.quote(specialChar);
                 input = input.replaceAll(specialChar, "");
             }
         }
     }
 
-    public void calculateTotalFrequency(){
+    private void removeSuccessiveSpaces(){
+        StringBuilder sb = new StringBuilder(input);
+        int deletedSpacesCount = 0;
+        for(int i = 1; i < input.length(); i++){
+            if(input.charAt(i) == ' ' && input.charAt(i) == input.charAt(i-1)){
+                sb.deleteCharAt(i - 1 - deletedSpacesCount);
+                deletedSpacesCount++;
+            }
+        }
+        input = sb.toString();
+    }
+
+    private void calculateTotalFrequency(){
         String[] allWords = input.trim().split(" ");
         String inputNoSpecialChars = String.join("", allWords);
-        int totalNonSpecialChars = String.join("", allWords).trim().length();
+        int totalNonSpecialChars = inputNoSpecialChars.length();
         int totalOccurrences = 0;
         for(char c : inputNoSpecialChars.toCharArray()){
             if(pattern.toLowerCase().contains(String.valueOf(c).toLowerCase())){
@@ -106,6 +121,7 @@ public class CharsFrequencyInWordsCalculator {
             sortedOutputList.remove(i);
         }
         outputList = sortedOutputList;
+        outputList.sort(Comparator.comparing(OutputModel::getOccurrencesCount));
     }
 
     private void display(){
@@ -119,6 +135,7 @@ public class CharsFrequencyInWordsCalculator {
 
     public void calculate(){
         removeSpecialChars();
+        removeSuccessiveSpaces();
         calculateTotalFrequency();
         fillMap();
         buildOutputList();
