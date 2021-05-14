@@ -24,6 +24,18 @@ public class CharsFrequencyInWordsCalculator {
         this.pattern = pattern;
     }
 
+    public int getTotalOccurrences() {
+        return totalOccurrences;
+    }
+
+    public int getTotalNonSpecialChars() {
+        return totalNonSpecialChars;
+    }
+
+    public ArrayList<OutputModel> getOutputList() {
+        return outputList;
+    }
+
     private void removeSpecialChars(){
         input = input.trim();
         for(String specialChar : SPECIAL_CHARS){
@@ -114,7 +126,6 @@ public class CharsFrequencyInWordsCalculator {
 
                 if (combination.length > 0){
                     outputList.add(new OutputModel(combination, wordLength, numberOfOccurrences, totalOccurrences));
-                    //System.out.println("word: "+word+" added with combination "+Arrays.toString(combination));
                 }
             }
         }
@@ -130,7 +141,6 @@ public class CharsFrequencyInWordsCalculator {
             OutputModel current = outputList.get(i);
             OutputModel previous = outputList.get(i-1);
             if(current.equals(previous)){
-                //System.out.println("equality on "+i);
                 current.setOccurrencesCount(current.getOccurrencesCount() + previous.getOccurrencesCount());
                 outputList.set(i, current);
                 indexesToDelete.add(i-1);
@@ -139,7 +149,6 @@ public class CharsFrequencyInWordsCalculator {
 
         Collections.sort(indexesToDelete, Collections.reverseOrder());
         for(int i : indexesToDelete){
-            //System.out.println("removing "+i + "th output: "+ outputList.get(i));
             outputList.remove(i);
         }
         outputList.sort(Comparator.comparing(OutputModel::getOccurrencesCount));
@@ -159,7 +168,6 @@ public class CharsFrequencyInWordsCalculator {
         removeSuccessiveSpaces();
         calculateTotalFrequency();
         fillMap();
-        //System.out.println(getMap());
         buildOutputList();
         mergeOutputs();
     }
