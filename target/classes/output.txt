@@ -3,43 +3,45 @@
 Pattern: LOGIC
 
 Input:
-  "  I love to work in global logic! Level the goddamn plate globally!! I do realize, that the last sentence doesn't make any sense at all. Maybe some monster like Kog'Maw wrote it. Here is some random raging user input: !@#sdf )(*&sdfk jh  $^+_'ds<>?:"{},.login/;'[]+_)(*&^%$#@! damn  " 
+  "  I love to work in global logic! Level the goddamn plate globally and logically!! I do realize, that the last sentence doesn't make any sense at all. Maybe some monster like Kog'Maw wrote it. Here is some random raging user input: !@#sdf )(*&sdfk jh  $^+_'ds<>?:"{},.login/;'[]+_)(*&^%$#@! damn  " 
 
 Input after removing special chars (but not spaces separating words):
- I love to work in global logic Level the goddamn plate globally I do realize that the last sentence doesnt make any sense at all Maybe some monster like KogMaw wrote it Here is some random raging user input sdf sdfk jh dslogin damn 
+I love to work in global logic Level the goddamn plate globally and logically I do realize that the last sentence doesnt make any sense at all Maybe some monster like KogMaw wrote it Here is some random raging user input sdf sdfk jh dslogin damn
 
 Map with (word length)|(list of words) as (key)|(value): 
 Word Length: 1   |   list of words: I I 
 Word Length: 2   |   list of words: to in do at it is jh 
-Word Length: 3   |   list of words: the the any all sdf 
+Word Length: 3   |   list of words: the and the any all sdf 
 Word Length: 4   |   list of words: love work that last make some like Here some user sdfk damn 
 Word Length: 5   |   list of words: logic Level plate sense Maybe wrote input 
 Word Length: 6   |   list of words: global doesnt KogMaw random raging 
 Word Length: 7   |   list of words: goddamn realize monster dslogin 
 Word Length: 8   |   list of words: globally sentence 
+Word Length: 9   |   list of words: logically 
 
 Final output after executing algorithm:
-OutputModel{combinationOfChars=[l], wordLength=4, occurrencesCount=1, totalOccurrences=53, frequency=0.02}
-OutputModel{combinationOfChars=[i], wordLength=5, occurrencesCount=1, totalOccurrences=53, frequency=0.02}
-OutputModel{combinationOfChars=[o], wordLength=5, occurrencesCount=1, totalOccurrences=53, frequency=0.02}
-OutputModel{combinationOfChars=[o], wordLength=6, occurrencesCount=1, totalOccurrences=53, frequency=0.02}
-OutputModel{combinationOfChars=[o], wordLength=6, occurrencesCount=1, totalOccurrences=53, frequency=0.02}
-OutputModel{combinationOfChars=[o], wordLength=7, occurrencesCount=1, totalOccurrences=53, frequency=0.02}
-OutputModel{combinationOfChars=[c], wordLength=8, occurrencesCount=1, totalOccurrences=53, frequency=0.02}
-OutputModel{combinationOfChars=[i], wordLength=1, occurrencesCount=2, totalOccurrences=53, frequency=0.04}
-OutputModel{combinationOfChars=[o], wordLength=2, occurrencesCount=2, totalOccurrences=53, frequency=0.04}
-OutputModel{combinationOfChars=[l], wordLength=3, occurrencesCount=2, totalOccurrences=53, frequency=0.04}
-OutputModel{combinationOfChars=[l, o], wordLength=4, occurrencesCount=2, totalOccurrences=53, frequency=0.04}
-OutputModel{combinationOfChars=[l, i], wordLength=4, occurrencesCount=2, totalOccurrences=53, frequency=0.04}
-OutputModel{combinationOfChars=[o, g], wordLength=6, occurrencesCount=2, totalOccurrences=53, frequency=0.04}
-OutputModel{combinationOfChars=[l, i], wordLength=7, occurrencesCount=2, totalOccurrences=53, frequency=0.04}
-OutputModel{combinationOfChars=[o, g], wordLength=7, occurrencesCount=2, totalOccurrences=53, frequency=0.04}
-OutputModel{combinationOfChars=[i], wordLength=2, occurrencesCount=3, totalOccurrences=53, frequency=0.06}
-OutputModel{combinationOfChars=[o], wordLength=4, occurrencesCount=3, totalOccurrences=53, frequency=0.06}
-OutputModel{combinationOfChars=[l], wordLength=5, occurrencesCount=3, totalOccurrences=53, frequency=0.06}
-OutputModel{combinationOfChars=[g, i], wordLength=6, occurrencesCount=3, totalOccurrences=53, frequency=0.06}
-OutputModel{combinationOfChars=[l, o, g], wordLength=6, occurrencesCount=4, totalOccurrences=53, frequency=0.08}
-OutputModel{combinationOfChars=[l, o, g, i], wordLength=7, occurrencesCount=4, totalOccurrences=53, frequency=0.08}
-OutputModel{combinationOfChars=[l, o, g, i, c], wordLength=5, occurrencesCount=5, totalOccurrences=53, frequency=0.09}
-OutputModel{combinationOfChars=[l, o, g], wordLength=8, occurrencesCount=5, totalOccurrences=53, frequency=0.09}
-TOTAL occurrences: 53, TOTAL non special chars: 188, TOTAL Frequency: 0.28
+OutputModel{combinationOfChars=[l], wordLength=4, occurrencesCount=1, totalOccurrences=60, frequency=0.02}
+OutputModel{combinationOfChars=[i], wordLength=5, occurrencesCount=1, totalOccurrences=60, frequency=0.02}
+OutputModel{combinationOfChars=[o], wordLength=5, occurrencesCount=1, totalOccurrences=60, frequency=0.02}
+OutputModel{combinationOfChars=[o], wordLength=6, occurrencesCount=1, totalOccurrences=60, frequency=0.02}
+OutputModel{combinationOfChars=[o], wordLength=6, occurrencesCount=1, totalOccurrences=60, frequency=0.02}
+OutputModel{combinationOfChars=[o], wordLength=7, occurrencesCount=1, totalOccurrences=60, frequency=0.02}
+OutputModel{combinationOfChars=[c], wordLength=8, occurrencesCount=1, totalOccurrences=60, frequency=0.02}
+OutputModel{combinationOfChars=[i], wordLength=1, occurrencesCount=2, totalOccurrences=60, frequency=0.03}
+OutputModel{combinationOfChars=[o], wordLength=2, occurrencesCount=2, totalOccurrences=60, frequency=0.03}
+OutputModel{combinationOfChars=[l], wordLength=3, occurrencesCount=2, totalOccurrences=60, frequency=0.03}
+OutputModel{combinationOfChars=[l, o], wordLength=4, occurrencesCount=2, totalOccurrences=60, frequency=0.03}
+OutputModel{combinationOfChars=[l, i], wordLength=4, occurrencesCount=2, totalOccurrences=60, frequency=0.03}
+OutputModel{combinationOfChars=[o, g], wordLength=6, occurrencesCount=2, totalOccurrences=60, frequency=0.03}
+OutputModel{combinationOfChars=[l, i], wordLength=7, occurrencesCount=2, totalOccurrences=60, frequency=0.03}
+OutputModel{combinationOfChars=[o, g], wordLength=7, occurrencesCount=2, totalOccurrences=60, frequency=0.03}
+OutputModel{combinationOfChars=[i], wordLength=2, occurrencesCount=3, totalOccurrences=60, frequency=0.05}
+OutputModel{combinationOfChars=[o], wordLength=4, occurrencesCount=3, totalOccurrences=60, frequency=0.05}
+OutputModel{combinationOfChars=[l], wordLength=5, occurrencesCount=3, totalOccurrences=60, frequency=0.05}
+OutputModel{combinationOfChars=[g, i], wordLength=6, occurrencesCount=3, totalOccurrences=60, frequency=0.05}
+OutputModel{combinationOfChars=[l, o, g], wordLength=6, occurrencesCount=4, totalOccurrences=60, frequency=0.07}
+OutputModel{combinationOfChars=[l, o, g, i], wordLength=7, occurrencesCount=4, totalOccurrences=60, frequency=0.07}
+OutputModel{combinationOfChars=[l, o, g, i, c], wordLength=5, occurrencesCount=5, totalOccurrences=60, frequency=0.08}
+OutputModel{combinationOfChars=[l, o, g], wordLength=8, occurrencesCount=5, totalOccurrences=60, frequency=0.08}
+OutputModel{combinationOfChars=[l, o, g, i, c], wordLength=9, occurrencesCount=7, totalOccurrences=60, frequency=0.12}
+TOTAL occurrences: 60, TOTAL non special chars: 200, TOTAL Frequency: 0.30

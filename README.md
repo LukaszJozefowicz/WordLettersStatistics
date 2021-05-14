@@ -40,4 +40,6 @@ Additional assumptions:
 with special character(s) removed. For example the word "Kog'Maw" will be treated as it was KogMaw and will fall into
 output category {(o, g), 6}. Words like "It's" and "doesn't" will be treated as Its and doesnt respectively.  
 ● When input is loaded from a file, line break (new line) is ignored. 
-The whole input is treated as String with no line breaks.
+The whole input is treated as String with no line breaks.  
+● Pattern (set of characters to search for in input, LOGIC as example) must be a single string consisting only of letters, without
+blank spaces

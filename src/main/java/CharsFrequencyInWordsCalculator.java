@@ -5,10 +5,11 @@ import java.util.regex.Pattern;
 
 public class CharsFrequencyInWordsCalculator {
 
+    final public Locale locale = Locale.US;
     final public static String[] SPECIAL_CHARS = {"\"", "!", "#", "$", "%", "&", "'",
                                         "(", ")", "*", "+", ",", "-", ".", "/", ":",
                                         ";", "<", "=", ">", "?", "@", "[", "\\", "]",
-                                        "^", "_", "`", "{", "|", "}", "~", ")", "\n"};
+                                        "^", "_", "`", "{", "|", "}", "~", ")"};
     private final String pattern;
     private String input;
     private final String originalInput;
@@ -51,7 +52,7 @@ public class CharsFrequencyInWordsCalculator {
         int totalNonSpecialChars = inputNoSpecialChars.length();
         int totalOccurrences = 0;
         for(char c : inputNoSpecialChars.toCharArray()){
-            if(pattern.toLowerCase().contains(String.valueOf(c).toLowerCase())){
+            if(pattern.toLowerCase(locale).contains(String.valueOf(c).toLowerCase(locale))){
                 totalOccurrences++;
             }
         }
@@ -89,7 +90,7 @@ public class CharsFrequencyInWordsCalculator {
 
     private int getAmountOfOccurrences(String word, char c, int currentCount){
         for(int i = 0; i < word.length(); i++){
-            if(word.toLowerCase(Locale.ROOT).charAt(i) == c){
+            if(word.toLowerCase(locale).charAt(i) == c){
                 currentCount++;
             }
         }
@@ -104,8 +105,8 @@ public class CharsFrequencyInWordsCalculator {
                 String matchingCombination = "";
                 int numberOfOccurrences = 0;
                 for(char c : pattern.toCharArray()){
-                    if (word.toLowerCase(Locale.ROOT).contains(String.valueOf(c).toLowerCase(Locale.ROOT))){
-                        matchingCombination += String.valueOf(c).toLowerCase(Locale.ROOT);
+                    if (word.toLowerCase(locale).contains(String.valueOf(c).toLowerCase(locale))){
+                        matchingCombination += String.valueOf(c).toLowerCase(locale);
                         numberOfOccurrences = getAmountOfOccurrences(word, Character.toLowerCase(c), numberOfOccurrences);
                     }
                 }
@@ -150,7 +151,7 @@ public class CharsFrequencyInWordsCalculator {
         }
         System.out.println("TOTAL occurrences: " + totalOccurrences
                 + ", TOTAL non special chars: " + totalNonSpecialChars
-                + ", TOTAL Frequency: "+ String.format(Locale.US, "%.2f", totalOccurrences/(float)totalNonSpecialChars));
+                + ", TOTAL Frequency: "+ String.format(locale, "%.2f", totalOccurrences/(float)totalNonSpecialChars));
     }
 
     public void calculate(){
@@ -184,7 +185,7 @@ public class CharsFrequencyInWordsCalculator {
         writer.append("TOTAL occurrences: " + totalOccurrences
                 + ", TOTAL non special chars: " + totalNonSpecialChars
                 + ", TOTAL Frequency: "
-                + String.format(Locale.US, "%.2f", totalOccurrences/(float)totalNonSpecialChars));
+                + String.format(locale, "%.2f", totalOccurrences/(float)totalNonSpecialChars));
         writer.close();
     }
 
