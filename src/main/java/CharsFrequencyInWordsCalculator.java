@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.*;
 import java.util.regex.Pattern;
 
@@ -6,12 +7,12 @@ public class CharsFrequencyInWordsCalculator {
     final public static String[] SPECIAL_CHARS = {"\"", "!", "#", "$", "%", "&", "'",
                                         "(", ")", "*", "+", ",", "-", ".", "/", ":",
                                         ";", "<", "=", ">", "?", "@", "[", "\\", "]",
-                                        "^", "_", "`", "{", "|", "}", "~", ")"};
+                                        "^", "_", "`", "{", "|", "}", "~", ")", "\n"};
     private final String pattern;
     private String input;
     private int totalOccurrences;
     private int totalNonSpecialChars;
-    private TreeMap<Integer, List<String>> wordsWithLengthsMap = new TreeMap<>();
+    private final TreeMap<Integer, List<String>> wordsWithLengthsMap = new TreeMap<>();
     private ArrayList<OutputModel> outputList = new ArrayList<>();
 
     public CharsFrequencyInWordsCalculator(String input, String pattern) {
@@ -39,6 +40,7 @@ public class CharsFrequencyInWordsCalculator {
             }
         }
         input = sb.toString();
+        System.out.println(input);
     }
 
     private void calculateTotalFrequency(){
@@ -82,6 +84,11 @@ public class CharsFrequencyInWordsCalculator {
         for(Map.Entry<Integer, List<String>> entry : wordsWithLengthsMap.entrySet()){
             int wordLength = entry.getKey();
             List<String> sameLengthWords = entry.getValue();
+            System.out.print(wordLength + " ");
+            for(String word: sameLengthWords){
+                System.out.print(word + " ");
+            }
+            System.out.println();
             for (String word: sameLengthWords){
                 String matchingCombination = "";
                 int numberOfOccurrences = 0;
@@ -141,6 +148,10 @@ public class CharsFrequencyInWordsCalculator {
         buildOutputList();
         mergeOutputs();
         display();
+    }
+
+    public void generateOutputFile() throws IOException {
+
     }
 
 }

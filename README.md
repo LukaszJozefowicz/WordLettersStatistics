@@ -35,4 +35,4 @@ same category: {(l), 5} and in this case the “l” char must be counted 3 time
 Additional assumption: 
 ● If a word has any special character inside, not separated by space, it will be treated as a single word 
 with special character(s) removed. For example the word "Kog'Maw" will be treated as it was KogMaw and will fall into
-output category {(o, g), 6}
+output category {(o, g), 6}. Words like "It's" and "doesn't" will be treated as Its and doesnt respectively.
