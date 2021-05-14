@@ -8,16 +8,16 @@ import java.util.stream.Stream;
 
 public class Main {
 
-    public static String input;
-    public static String pattern;
+    private static String input;
+    private static String pattern;
 
-    public static void readPatternFromFile() throws IOException {
+    private static void readPatternFromFile() throws IOException {
         File file = new File("src/main/resources/pattern.txt");
         String absolutePath = file.getAbsolutePath();
         pattern = Files.readString(Path.of(absolutePath));
     }
 
-    public static void readInputFromFile() throws IOException {
+    private static void readInputFromFile() throws IOException {
         File file = new File("src/main/resources/input.txt");
         String absolutePath = file.getAbsolutePath();
         StringBuilder sb = new StringBuilder();
