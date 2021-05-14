@@ -36,7 +36,7 @@ same group, regardless of how many times the characters appear (e.g. “plate”
 same category: {(l), 5} and in this case the “l” char must be counted 3 times);
 
 Additional assumptions:  
-● If a word has any special character inside, not separated by space, it will be treated as a single word 
+● If a word has any special characters inside, not separated by space, it will be treated as a single word 
 with special character(s) removed. For example the word "Kog'Maw" will be treated as it was KogMaw and will fall into
 output category {(o, g), 6}. Words like "It's" and "doesn't" will be treated as Its and doesnt respectively.  
 ● When input is loaded from a file, line break (new line) is ignored. 

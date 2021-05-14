@@ -8,11 +8,12 @@ import java.util.stream.Stream;
 
 public class Main {
 
-    public static String input = "\"I love to work in global logic! Level the goddamn plate globally!!\"";
+    public static String input;
+//    public static String input1 = "\"I love to work in global logic! Level the goddamn plate globally!!\"";
 //    public static String input2 = "\"    l$$^^evel     plate  !!   sumthin  #$%^\"   ";
 //    public static String input3 = "Level the goddamn plate globally!!";
 //    public static String input4 = "Kog'maw is a freaking monster!!";
-    public static String pattern = "LOGIC";
+    public static String pattern;
 
     public static void readPatternFromFile() throws IOException {
         File file = new File("src/main/resources/pattern.txt");
@@ -36,5 +37,7 @@ public class Main {
         System.out.println("Pattern: " + pattern +"\n");
         CharsFrequencyInWordsCalculator calc = new CharsFrequencyInWordsCalculator(input, pattern);
         calc.calculate();
+        calc.displayOutput();
+        calc.generateOutputFile();
     }
 }

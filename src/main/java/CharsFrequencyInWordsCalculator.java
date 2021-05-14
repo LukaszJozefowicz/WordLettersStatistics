@@ -1,4 +1,5 @@
-import java.io.IOException;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.regex.Pattern;
 
@@ -10,6 +11,7 @@ public class CharsFrequencyInWordsCalculator {
                                         "^", "_", "`", "{", "|", "}", "~", ")", "\n"};
     private final String pattern;
     private String input;
+    private final String originalInput;
     private int totalOccurrences;
     private int totalNonSpecialChars;
     private final TreeMap<Integer, List<String>> wordsWithLengthsMap = new TreeMap<>();
@@ -17,6 +19,7 @@ public class CharsFrequencyInWordsCalculator {
 
     public CharsFrequencyInWordsCalculator(String input, String pattern) {
         this.input = input;
+        this.originalInput = input;
         this.pattern = pattern;
     }
 
@@ -39,12 +42,11 @@ public class CharsFrequencyInWordsCalculator {
                 deletedSpacesCount++;
             }
         }
-        input = sb.toString();
-        System.out.println(input);
+        input = sb.toString().trim();
     }
 
     private void calculateTotalFrequency(){
-        String[] allWords = input.trim().split(" ");
+        String[] allWords = input.split(" ");
         String inputNoSpecialChars = String.join("", allWords);
         int totalNonSpecialChars = inputNoSpecialChars.length();
         int totalOccurrences = 0;
@@ -71,6 +73,20 @@ public class CharsFrequencyInWordsCalculator {
         }
     }
 
+    private String getMapAsString(){
+        String mapOutput = "Map with (word length)|(list of words) as (key)|(value): \n";
+        for(Map.Entry<Integer, List<String>> entry : wordsWithLengthsMap.entrySet()) {
+            int wordLength = entry.getKey();
+            mapOutput += "Word Length: " + wordLength + "   |   list of words: ";
+            List<String> sameLengthWords = entry.getValue();
+            for (String word : sameLengthWords) {
+                mapOutput += word + " ";
+            }
+            mapOutput += "\n";
+        }
+        return mapOutput;
+    }
+
     private int getAmountOfOccurrences(String word, char c, int currentCount){
         for(int i = 0; i < word.length(); i++){
             if(word.toLowerCase(Locale.ROOT).charAt(i) == c){
@@ -84,11 +100,6 @@ public class CharsFrequencyInWordsCalculator {
         for(Map.Entry<Integer, List<String>> entry : wordsWithLengthsMap.entrySet()){
             int wordLength = entry.getKey();
             List<String> sameLengthWords = entry.getValue();
-            System.out.print(wordLength + " ");
-            for(String word: sameLengthWords){
-                System.out.print(word + " ");
-            }
-            System.out.println();
             for (String word: sameLengthWords){
                 String matchingCombination = "";
                 int numberOfOccurrences = 0;
@@ -102,6 +113,7 @@ public class CharsFrequencyInWordsCalculator {
 
                 if (combination.length > 0){
                     outputList.add(new OutputModel(combination, wordLength, numberOfOccurrences, totalOccurrences));
+                    //System.out.println("word: "+word+" added with combination "+Arrays.toString(combination));
                 }
             }
         }
@@ -110,28 +122,29 @@ public class CharsFrequencyInWordsCalculator {
     private void mergeOutputs(){
         outputList.sort(Comparator.comparing(OutputModel::getWordLength)
                 .thenComparing(OutputModel::getFirstCharAsInt));
-        ArrayList<OutputModel> sortedOutputList = outputList;
 
         List<Integer> indexesToDelete = new ArrayList<>();
 
-        for(int i = 1; i < sortedOutputList.size(); i++){
-            OutputModel current = sortedOutputList.get(i);
-            OutputModel previous = sortedOutputList.get(i-1);
+        for(int i = 1; i < outputList.size(); i++){
+            OutputModel current = outputList.get(i);
+            OutputModel previous = outputList.get(i-1);
             if(current.equals(previous)){
+                //System.out.println("equality on "+i);
                 current.setOccurrencesCount(current.getOccurrencesCount() + previous.getOccurrencesCount());
-                sortedOutputList.set(i, current);
+                outputList.set(i, current);
                 indexesToDelete.add(i-1);
             }
         }
 
+        Collections.sort(indexesToDelete, Collections.reverseOrder());
         for(int i : indexesToDelete){
-            sortedOutputList.remove(i);
+            //System.out.println("removing "+i + "th output: "+ outputList.get(i));
+            outputList.remove(i);
         }
-        outputList = sortedOutputList;
         outputList.sort(Comparator.comparing(OutputModel::getOccurrencesCount));
     }
 
-    private void display(){
+    public void displayOutput(){
         for(OutputModel singleOutput: outputList){
             System.out.println(singleOutput);
         }
@@ -145,13 +158,34 @@ public class CharsFrequencyInWordsCalculator {
         removeSuccessiveSpaces();
         calculateTotalFrequency();
         fillMap();
+        //System.out.println(getMap());
         buildOutputList();
         mergeOutputs();
-        display();
     }
 
     public void generateOutputFile() throws IOException {
+        File outputFile = new File("src/main/resources/output.txt");
+        if(outputFile.exists()){
+            outputFile.delete();
+        }
+        outputFile.createNewFile();
 
+        FileOutputStream fos = new FileOutputStream(outputFile);
+        OutputStreamWriter writer = new OutputStreamWriter(fos, StandardCharsets.UTF_8);
+        writer.append("-------------REPORT OF ALGORITHM EXECUTION-------------\n\n");
+        writer.append("Pattern: " + pattern + "\n\n");
+        writer.append("Input:\n" + originalInput + "\n\n");
+        writer.append("Input after removing special chars (but not spaces separating words):\n" + input + "\n\n");
+        writer.append(getMapAsString()+ "\n");
+        writer.append("Final output after executing algorithm:\n");
+        for(OutputModel output : outputList){
+            writer.append(output.toString() + "\n");
+        }
+        writer.append("TOTAL occurrences: " + totalOccurrences
+                + ", TOTAL non special chars: " + totalNonSpecialChars
+                + ", TOTAL Frequency: "
+                + String.format(Locale.US, "%.2f", totalOccurrences/(float)totalNonSpecialChars));
+        writer.close();
     }
 
 }
