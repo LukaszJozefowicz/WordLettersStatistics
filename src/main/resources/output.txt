@@ -23,16 +23,15 @@ Final output after executing algorithm:
 OutputModel{combinationOfChars=[l], wordLength=4, occurrencesCount=1, totalOccurrences=60, frequency=0.02}
 OutputModel{combinationOfChars=[i], wordLength=5, occurrencesCount=1, totalOccurrences=60, frequency=0.02}
 OutputModel{combinationOfChars=[o], wordLength=5, occurrencesCount=1, totalOccurrences=60, frequency=0.02}
-OutputModel{combinationOfChars=[o], wordLength=6, occurrencesCount=1, totalOccurrences=60, frequency=0.02}
-OutputModel{combinationOfChars=[o], wordLength=6, occurrencesCount=1, totalOccurrences=60, frequency=0.02}
 OutputModel{combinationOfChars=[o], wordLength=7, occurrencesCount=1, totalOccurrences=60, frequency=0.02}
 OutputModel{combinationOfChars=[c], wordLength=8, occurrencesCount=1, totalOccurrences=60, frequency=0.02}
 OutputModel{combinationOfChars=[i], wordLength=1, occurrencesCount=2, totalOccurrences=60, frequency=0.03}
 OutputModel{combinationOfChars=[o], wordLength=2, occurrencesCount=2, totalOccurrences=60, frequency=0.03}
 OutputModel{combinationOfChars=[l], wordLength=3, occurrencesCount=2, totalOccurrences=60, frequency=0.03}
-OutputModel{combinationOfChars=[l, o], wordLength=4, occurrencesCount=2, totalOccurrences=60, frequency=0.03}
 OutputModel{combinationOfChars=[l, i], wordLength=4, occurrencesCount=2, totalOccurrences=60, frequency=0.03}
+OutputModel{combinationOfChars=[l, o], wordLength=4, occurrencesCount=2, totalOccurrences=60, frequency=0.03}
 OutputModel{combinationOfChars=[o, g], wordLength=6, occurrencesCount=2, totalOccurrences=60, frequency=0.03}
+OutputModel{combinationOfChars=[o], wordLength=6, occurrencesCount=2, totalOccurrences=60, frequency=0.03}
 OutputModel{combinationOfChars=[l, i], wordLength=7, occurrencesCount=2, totalOccurrences=60, frequency=0.03}
 OutputModel{combinationOfChars=[o, g], wordLength=7, occurrencesCount=2, totalOccurrences=60, frequency=0.03}
 OutputModel{combinationOfChars=[i], wordLength=2, occurrencesCount=3, totalOccurrences=60, frequency=0.05}

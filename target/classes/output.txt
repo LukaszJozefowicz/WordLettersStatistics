@@ -3,13 +3,24 @@
 Pattern: LOGIC
 
 Input:
-
+  "  I love to work in global logic!   " 
 
 Input after removing special chars (but not spaces separating words):
-
+I love to work in global logic
 
 Map with (word length)|(list of words) as (key)|(value): 
-Word Length: 0   |   list of words:  
+Word Length: 1   |   list of words: I 
+Word Length: 2   |   list of words: to in 
+Word Length: 4   |   list of words: love work 
+Word Length: 5   |   list of words: logic 
+Word Length: 6   |   list of words: global 
 
 Final output after executing algorithm:
-TOTAL occurrences: 0, TOTAL non special chars: 0, TOTAL Frequency: NaN
+OutputModel{combinationOfChars=[i], wordLength=1, occurrencesCount=1, totalOccurrences=15, frequency=0.07}
+OutputModel{combinationOfChars=[i], wordLength=2, occurrencesCount=1, totalOccurrences=15, frequency=0.07}
+OutputModel{combinationOfChars=[o], wordLength=2, occurrencesCount=1, totalOccurrences=15, frequency=0.07}
+OutputModel{combinationOfChars=[o], wordLength=4, occurrencesCount=1, totalOccurrences=15, frequency=0.07}
+OutputModel{combinationOfChars=[l, o], wordLength=4, occurrencesCount=2, totalOccurrences=15, frequency=0.13}
+OutputModel{combinationOfChars=[l, o, g], wordLength=6, occurrencesCount=4, totalOccurrences=15, frequency=0.27}
+OutputModel{combinationOfChars=[l, o, g, i, c], wordLength=5, occurrencesCount=5, totalOccurrences=15, frequency=0.33}
+TOTAL occurrences: 15, TOTAL non special chars: 24, TOTAL Frequency: 0.63

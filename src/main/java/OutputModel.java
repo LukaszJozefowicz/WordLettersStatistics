@@ -26,6 +26,10 @@ public class OutputModel {
         return combinationOfChars[0];
     }
 
+    public int getSecondCharAsInt() {
+        return combinationOfChars.length > 1 ? combinationOfChars[1] : combinationOfChars[0];
+    }
+
     public int getWordLength() {
         return wordLength;
     }
